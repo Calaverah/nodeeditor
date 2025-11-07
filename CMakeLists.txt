@@ -181,7 +181,7 @@ if(NOT "${CMAKE_CXX_SIMULATE_ID}" STREQUAL "MSVC")
 endif()
 
 if(QT_NODES_DEVELOPER_DEFAULTS)
-  target_compile_features(QtNodes PUBLIC cxx_std_14)
+  target_compile_features(QtNodes PUBLIC cxx_std_23)
   set_target_properties(QtNodes PROPERTIES CXX_EXTENSIONS OFF)
 endif()
 
