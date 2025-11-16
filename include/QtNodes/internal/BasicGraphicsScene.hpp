@@ -126,7 +126,7 @@ Q_SIGNALS:
     /// Signal allows showing custom context menu upon clicking a node.
     void nodeContextMenu(NodeId const nodeId, QPointF const pos);
 
-private:
+protected:
     /**
      * @brief Creates Node and Connection graphics objects.
      * 
@@ -134,10 +134,10 @@ private:
      * perform depth-first AbstractGraphModel traversal. The connections are
      * created by checking non-empty node `Out` ports.
      */
-    void traverseGraphAndPopulateGraphicsObjects();
+    virtual void traverseGraphAndPopulateGraphicsObjects();
 
     /// Redraws adjacent nodes for given `connectionId`
-    void updateAttachedNodes(ConnectionId const connectionId, PortType const portType);
+    virtual void updateAttachedNodes(ConnectionId const connectionId, PortType const portType);
 
 public Q_SLOTS:
     /// Slot called when the `connectionId` is erased form the AbstractGraphModel.
@@ -153,7 +153,7 @@ public Q_SLOTS:
     virtual void onNodeClicked(NodeId const nodeId);
     virtual void onModelReset();
 
-private:
+protected:
     AbstractGraphModel &_graphModel;
 
     using UniqueNodeGraphicsObject = std::unique_ptr<NodeGraphicsObject>;
