@@ -46,7 +46,7 @@ private:
 
     unsigned int maxPortsTextAdvance(NodeId const nodeId, PortType const portType) const;
 
-private:
+protected:
     // Some variables are mutable because we need to change drawing
     // metrics corresponding to fontMetrics but this doesn't change
     // constness of the Node.
