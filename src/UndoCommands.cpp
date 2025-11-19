@@ -63,7 +63,7 @@ static void insertSerializedItems(QJsonObject const &json, BasicGraphicsScene *s
 
         graphModel.loadNode(obj);
 
-        auto id = obj["id"].toString().toUInt();
+        auto id = obj["id"].toVariant().toUInt();
         scene->nodeGraphicsObject(id)->setZValue(1.0);
         scene->nodeGraphicsObject(id)->setSelected(true);
     }
@@ -98,7 +98,7 @@ static void deleteSerializedItems(QJsonObject &sceneJson, AbstractGraphModel &gr
 
     for (QJsonValueRef node : nodesJsonArray) {
         QJsonObject nodeJson = node.toObject();
-        graphModel.deleteNode(nodeJson["id"].toString().toUInt());
+        graphModel.deleteNode(nodeJson["id"].toVariant().toUInt());
     }
 }
 
@@ -332,7 +332,7 @@ QJsonObject PasteCommand::makeNewNodeIdsInScene(QJsonObject const &sceneJson)
     for (QJsonValueRef node : nodesJsonArray) {
         QJsonObject nodeJson = node.toObject();
 
-        NodeId oldNodeId = nodeJson["id"].toString().toUInt();
+        NodeId oldNodeId = nodeJson["id"].toVariant().toUInt();
 
         NodeId newNodeId = graphModel.newNodeId();
 

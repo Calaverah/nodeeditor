@@ -28,7 +28,7 @@ public:
 public:
     ConnectionGraphicsObject(BasicGraphicsScene &scene, ConnectionId const connectionId);
 
-    ~ConnectionGraphicsObject() = default;
+    virtual ~ConnectionGraphicsObject() = default;
 
 public:
     AbstractGraphModel &graphModel() const;
